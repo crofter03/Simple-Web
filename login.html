@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 来福枪的主页</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .login-form input {
+            padding: 10px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .login-form input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255,159,28,0.2);
+            outline: none;
+        }
+        
+        .login-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-form button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .error-message {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>欢迎访问</h1>
+        <form class="login-form" id="login-form">
+            <input type="password" id="password" placeholder="请输入访问密码" required>
+            <p class="error-message" id="error-message">密码错误，请重试</p>
+            <button type="submit">进入</button>
+        </form>
+    </div>
+
+    <script>
+        // 获取当天日期并计算密码
+        function getTodayPassword() {
+            const today = new Date();
+            const day = today.getDate(); // 获取当月的日期（1-31）
+            return (day * 3 + 2).toString(); // 日期*3+2
+        }
+        
+        // 检查是否已登录
+        if (sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'index.html';
+        }
+        
+        // 页面加载完成后自动聚焦到密码输入框
+        window.onload = function() {
+            document.getElementById('password').focus();
+        }
+        
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const correctPassword = getTodayPassword();
+            
+            if (password === correctPassword) {
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('password').value = '';
+                // 输入错误后也自动聚焦
+                document.getElementById('password').focus();
+            }
+        });
+    </script>
+</body>
+</html> 

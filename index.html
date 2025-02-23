@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人网页</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script>
+        // 检查是否已登录
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <header>
+        <nav>
+            <div class="logo">来福枪的主页</div>
+            <ul class="nav-links">
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#gallery">照片集</a></li>
+                <li><a href="#ai">AI助手</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="about-section">
+            <div class="profile">
+                <img src="D:/Cursor/Simple WEB/photo/000037.JPG" alt="个人头像" class="avatar">
+                <h1>你好，我是来福枪</h1>
+                <p>一个热爱生活、追求极致的探索者。在科技与艺术的交织中寻找平衡，用镜头记录世界的美好，用代码构建数字未来。生活不止眼前的代码，还有诗和远方的田野。</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <h2>照片集</h2>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="D:/Cursor/Simple WEB/photo/000030.JPG" alt="照片1"></div>
+                    <div class="swiper-slide"><img src="D:/Cursor/Simple WEB/photo/000032.JPG" alt="照片2"></div>
+                    <div class="swiper-slide"><img src="D:/Cursor/Simple WEB/photo/000037.JPG" alt="照片3"></div>
+                    <div class="swiper-slide"><img src="D:/Cursor/Simple WEB/photo/IMG_20201117_223036.jpg" alt="照片4"></div>
+                    <div class="swiper-slide"><img src="D:/Cursor/Simple WEB/photo/IMG_20210221_124124.jpg" alt="照片5"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+        <section id="ai" class="ai-section">
+            <h2>AI 助手</h2>
+            <div id="chat-container">
+                <div id="messages-container">
+                    <div class="message ai">
+                        <p>你好！我是AI助手，很高兴为你服务。</p>
+                    </div>
+                </div>
+                <form id="chat-form">
+                    <div class="input-container">
+                        <input type="text" id="user-input" placeholder="请输入你的问题..." required>
+                        <button type="submit">发送</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="social" class="social-section">
+            <h2>社交媒体</h2>
+            <div class="social-links">
+                <a href="https://weibo.com/u/1401112593" target="_blank"><i class="fab fa-weibo"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 来福枪的主页</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
